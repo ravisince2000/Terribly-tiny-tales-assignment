@@ -1,70 +1,59 @@
-# Getting Started with Create React App
+The Frontend Part or UI interaction website is also hosted in netlify and you can checkout by visiting the following URLs:
+https://terribly-tiny-tales-project.netlify.app/
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+EXPLAINATION of the code:
 
-In the project directory, you can run:
+The code you provided is a React component that utilizes the following libraries and plugins:
 
-### `npm start`
+React: A JavaScript library for building user interfaces. It allows you to create reusable UI components.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+useState: A React hook that enables functional components to have stateful logic. It is used to define and update the state variable data.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+useEffect: Another React hook that allows you to perform side effects in functional components. It is used in two places in the code to fetch data when the component mounts and to render the chart when the data state variable changes.
 
-### `npm test`
+axios: A popular JavaScript library for making HTTP requests. It is used to send an HTTP GET request to fetch the data from a URL.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Chart.js: A versatile JavaScript charting library that provides various types of charts. It is used to render the bar chart based on the word frequency data.
 
-### `npm run build`
+Now let's break down the code step by step:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The code starts by importing the required libraries and plugins.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The App component is defined as a functional component.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Inside the component, the data state variable is defined using the useState hook. It is initialized with null.
 
-### `npm run eject`
+The first useEffect hook is used to fetch data when the component mounts. The hook runs only once because an empty dependency array is passed. It calls the fetchData function.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+The fetchData function is an asynchronous function that makes an HTTP GET request to the URL 'https://www.terriblytinytales.com/test.txt'.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+If the response is successful, the fetched text is split into an array of words using the regular expression /\\s+/.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+The word frequency is calculated by creating a wordCountMap, which is an instance of Map. It stores each word as the key and its count as the value.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+The array representation of wordCountMap is sorted in descending order based on the count of each word.
 
-## Learn More
+The top 20 words are extracted from the sorted word count array.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+The labels and counts are extracted from the top 20 words array.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+The chartData object is created, which contains the labels, data, and other configuration options for the chart.
 
-### Code Splitting
+The chartData is set as the new value for the data state variable using the setData function.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+If there is an error in the HTTP request, it is caught in the catch block, and the error is logged to the console.
 
-### Analyzing the Bundle Size
+The handleExport function is defined to handle the export functionality. It generates a CSV content string by mapping over the labels and counts in the data object and joins them with '\n'. Then it creates a download link for the CSV file and triggers the download.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+The second useEffect hook is used to render the chart using Chart.js when the data state variable changes. It runs whenever the data state variable changes. It selects the canvas element with the id 'chart' and creates a new Chart instance with the chart configuration.
 
-### Making a Progressive Web App
+The JSX returned by the component contains the UI elements to be rendered.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+The UI includes a heading, a submit button that triggers the fetchData function when clicked, and a canvas element with the id 'chart' where the chart will be rendered.
 
-### Advanced Configuration
+If the data state variable is available, it renders the chart canvas and an export button.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Finally, the App component is exported as the default export.
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Please note that for the code to work, you need to have the required dependencies (React, axios, and Chart.js) installed and properly configured in your development environment
