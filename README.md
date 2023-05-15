@@ -1,5 +1,5 @@
 The Frontend Part or UI interaction website is also hosted in netlify and you can checkout by visiting the following URLs:
-https://terribly-tiny-tales-project.netlify.app/
+https://netlify-hostedapp-raviranjan.netlify.app/
 
 
 EXPLAINATION of the code:
