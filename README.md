@@ -4,7 +4,7 @@ https://terribly-tiny-tales-project.netlify.app/
 
 EXPLAINATION of the code:
 
-The following assignment  is based  React component that utilizes the following libraries and plugins:
+The following assignment  is based on React component that utilizes the following libraries and plugins:
 
 React: A JavaScript library for building user interfaces. It allows you to create reusable UI components.
 
